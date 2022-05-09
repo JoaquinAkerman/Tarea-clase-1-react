@@ -8,6 +8,7 @@ export function MatchNombre(props) {
         onChange={(e) => setValue(e.target.value)}
         value={value}
       ></input>
+      (Ingresar joaquin)
     </div>
   );
 }
@@ -19,12 +20,11 @@ export function PasswordInput(props) {
       Password:
       <input
         type='password'
-        className={'input'.concat(
-          value.length == props.minLenght ? ' input-match' : ''
-        )}
+        className={value.length < props.minLenght ? ' input-match ' : ' input'}
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
+      (longitud minima 5)
     </div>
   );
 }
