@@ -1,3 +1,5 @@
+'use strict';
+
 export function MatchNombre(props) {
   const [value, setValue] = React.useState('');
   return (
@@ -24,7 +26,37 @@ export function PasswordInput(props) {
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      (longitud minima 5)
+      (longitud minima 8)
+    </div>
+  );
+}
+
+export function validarPassword(value) {
+  if (
+    value.length >= 8 &&
+    !value.match(' ') &&
+    value.match(
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )
+  ) {
+    return true;
+  } else return false;
+}
+
+export function ValidationInput(props) {
+  const [value, setValue] = React.useState('');
+  return (
+    <div>
+      email:
+      <input
+        //type='password' AGREGAR DESPUES
+        className={
+          props.validacionDeinput(value) === true ? ' input ' : ' input-match '
+        }
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+      />
+      (ingresar correo)
     </div>
   );
 }

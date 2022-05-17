@@ -3,7 +3,16 @@ import { datosParaTarjeta } from './datos_para_tareas/datosParaTarjeta.js';
 import { BlogPost } from './components/BlogPost.js';
 import { datosParaBlogPost } from './datos_para_tareas/datosParaBlogpost.js';
 import { MatchNombre, PasswordInput } from './components/input.js';
+import { validarPassword } from './components/input.js';
+import { ValidationInput } from './components/input.js';
+import { UncontrolledCheckbox } from './components/checkbox.js';
+import { CheckboxList } from './components/checkbox.js';
 
+const objetoParaChecklist = {
+  ['uno']: [false],
+  ['dos']: [true],
+  ['tres']: [false],
+};
 /// Tarjeta de presentación, parte 1 tarea 1
 const {
   nombreDelTitular1,
@@ -36,7 +45,21 @@ ReactDOM.render(
     ></BlogPost>,
     <h1 key='tarea 2'>Tarea 2</h1>,
     <MatchNombre key='3' nombre='joaquin'></MatchNombre>,
-    <PasswordInput key='4' minLenght={5}></PasswordInput>,
+    <PasswordInput key='4' minLenght={8}></PasswordInput>,
+    <ValidationInput
+      key='5'
+      validacionDeinput={validarPassword}
+    ></ValidationInput>,
+    <h1 key='tarea3'> Tarea 3</h1>,
+    //  <UncontrolledCheckbox
+    //    key='6'
+    //   nombreDeCaja={'caja mágica'}
+    //   initialValue={true}
+    // ></UncontrolledCheckbox>,
+    <CheckboxList
+      key='7'
+      objetoParaChecklist={objetoParaChecklist}
+    ></CheckboxList>,
   ],
   document.getElementById('react-app')
 );
