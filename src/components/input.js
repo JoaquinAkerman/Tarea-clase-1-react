@@ -4,13 +4,13 @@ export function MatchNombre(props) {
   const [value, setValue] = React.useState('');
   return (
     <div>
-      Nombre:
+      {'Nombre: '}
       <input
         className={'input'.concat(value === props.nombre ? ' input-match' : '')}
         onChange={(e) => setValue(e.target.value)}
         value={value}
       ></input>
-      (Ingresar joaquin)
+      {' Ingresar joaquin'}{' '}
     </div>
   );
 }
@@ -19,14 +19,14 @@ export function PasswordInput(props) {
   const [value, setValue] = React.useState('');
   return (
     <div>
-      Password:
+      {'Password: '}
       <input
         type='password'
         className={value.length < props.minLenght ? ' input-match ' : ' input'}
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      (longitud minima 8)
+      {' (longitud minima 8)'}
     </div>
   );
 }
@@ -47,16 +47,15 @@ export function ValidationInput(props) {
   const [value, setValue] = React.useState('');
   return (
     <div>
-      email:
+      {'  email:'}
       <input
-        //type='password' AGREGAR DESPUES
         className={
           props.validacionDeinput(value) === true ? ' input ' : ' input-match '
         }
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      (ingresar correo)
+      {'(ingresar correo)'}
     </div>
   );
 }

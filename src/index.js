@@ -5,15 +5,16 @@ import { datosParaBlogPost } from './datos_para_tareas/datosParaBlogpost.js';
 import { MatchNombre, PasswordInput } from './components/input.js';
 import { validarPassword } from './components/input.js';
 import { ValidationInput } from './components/input.js';
-import { UncontrolledCheckbox } from './components/checkbox.js';
+import {
+  UncontrolledCheckbox,
+  ControlledCheckbox,
+} from './components/checkbox.js';
 import { CheckboxList } from './components/checkbox.js';
+import { objetoParaChecklist } from './datos_para_tareas/objetoParaChecklist.js';
 
-const objetoParaChecklist = {
-  ['uno']: [false],
-  ['dos']: [true],
-  ['tres']: [false],
-};
-/// Tarjeta de presentación, parte 1 tarea 1
+function funcionParaCheckbox() {
+  console.log('hicieron click en el checkbox');
+}
 const {
   nombreDelTitular1,
   titulo1,
@@ -51,15 +52,22 @@ ReactDOM.render(
       validacionDeinput={validarPassword}
     ></ValidationInput>,
     <h1 key='tarea3'> Tarea 3</h1>,
-    //  <UncontrolledCheckbox
-    //    key='6'
-    //   nombreDeCaja={'caja mágica'}
-    //   initialValue={true}
-    // ></UncontrolledCheckbox>,
+    <UncontrolledCheckbox
+      key='6'
+      nombreDeCaja={'caja mágica'}
+      initialValue={true}
+    ></UncontrolledCheckbox>,
     <CheckboxList
       key='7'
       objetoParaChecklist={objetoParaChecklist}
     ></CheckboxList>,
+    <h1 key='tarea4'>Tarea 4</h1>,
+    <ControlledCheckbox
+      key='8'
+      name='caja controlada'
+      checked={true}
+      funcionParaCheckbox={funcionParaCheckbox()}
+    ></ControlledCheckbox>,
   ],
   document.getElementById('react-app')
 );
