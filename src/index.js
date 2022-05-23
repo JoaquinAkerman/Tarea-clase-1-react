@@ -1,5 +1,4 @@
 import { Card } from './components/Card.js';
-import { datosParaTarjeta } from './datos_para_tareas/datosParaTarjeta.js';
 import { BlogPost } from './components/BlogPost.js';
 import { datosParaBlogPost } from './datos_para_tareas/datosParaBlogpost.js';
 import { MatchNombre, PasswordInput } from './components/input.js';
@@ -8,66 +7,43 @@ import { ValidationInput } from './components/input.js';
 import {
   UncontrolledCheckbox,
   ControlledCheckbox,
+  CheckboxListWithState,
 } from './components/checkbox.js';
 import { CheckboxList } from './components/checkbox.js';
 import { objetoParaChecklist } from './datos_para_tareas/objetoParaChecklist.js';
-
-function funcionParaCheckbox() {
-  console.log('hicieron click en el checkbox');
-}
-const {
-  nombreDelTitular1,
-  titulo1,
-  imagenSrc1,
-  imagenAlt1,
-  imagenClass1,
-  headerClass1,
-} = datosParaTarjeta;
-const { tituloBlogpost, parrafo1, parrafo2, parrafo3 } = datosParaBlogPost;
-
+import {
+  dataParaControledCheckbox,
+  itemsParaCheckboxListWithState,
+} from './datos_para_tareas/datosParaControledCheckbox.js';
 ReactDOM.render(
   [
-    <h1 key='Tarea 1'>Tarea 1</h1>,
-    <Card
-      key='1'
-      nombreDelTitular={nombreDelTitular1}
-      contenidoPie={titulo1}
-      imagenSrc={imagenSrc1}
-      imagenAlt={imagenAlt1}
-      imagenClass={imagenClass1}
-      headerClass={headerClass1}
-    />,
-    <BlogPost
-      key='2'
-      tituloDeBlogPost={tituloBlogpost}
-      parrafo1={parrafo1}
-      parrafo2={parrafo2}
-      parrafo3={parrafo3}
-    ></BlogPost>,
-    <h1 key='tarea 2'>Tarea 2</h1>,
-    <MatchNombre key='3' nombre='joaquin'></MatchNombre>,
-    <PasswordInput key='4' minLenght={8}></PasswordInput>,
+    <h1 key='Tarea-1'>Tarea 1</h1>,
+    <Card key='card' {...datosParaBlogPost} />,
+    <BlogPost key='BlogPost' {...datosParaBlogPost} />,
+    <h1 key='tarea-2'>Tarea 2</h1>,
+    <MatchNombre key='MatchNombre' nombre='joaquin' />,
+    <PasswordInput key='PasswordInput' minLenght={8} />,
     <ValidationInput
-      key='5'
+      key='ValidationInput'
       validacionDeinput={validarPassword}
-    ></ValidationInput>,
-    <h1 key='tarea3'> Tarea 3</h1>,
+    />,
+    <h1 key='tarea-3'> Tarea 3</h1>,
     <UncontrolledCheckbox
-      key='6'
+      key='UncontrolledCheckbox'
       nombreDeCaja={'caja mágica'}
       initialValue={true}
-    ></UncontrolledCheckbox>,
-    <CheckboxList
-      key='7'
-      objetoParaChecklist={objetoParaChecklist}
-    ></CheckboxList>,
-    <h1 key='tarea4'>Tarea 4</h1>,
+    />,
+    <CheckboxList key='7' objetoParaChecklist={objetoParaChecklist} />,
+    ////////////////////////////////
+    <h1 key='tarea-4'>Tarea 4</h1>,
     <ControlledCheckbox
-      key='8'
-      name='caja controlada'
-      checked={true}
-      funcionParaCheckbox={funcionParaCheckbox()}
-    ></ControlledCheckbox>,
+      key='ControlledCheckbox'
+      {...dataParaControledCheckbox}
+    />,
+    <CheckboxListWithState
+      key='CheckboxListWithState'
+      items={itemsParaCheckboxListWithState}
+    />,
   ],
   document.getElementById('react-app')
 );
